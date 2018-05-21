@@ -1,29 +1,52 @@
-﻿@model IEnumerable<Northwind.Entities.Product>
+﻿@model Northwind.MVCWebUI.Models.ProductViewModel
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Northwind";
 }
+<h1>Products</h1>
 
-<h2>Index</h2>
+<div style="background-color:darkgray">
+    @using (Html.BeginForm("AddToCart", "Cart"))
+    {
+        <table class="table table-striped">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-   
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductName)
-          <br />
-           @Html.DisplayFor(modelItem => item.UnitPrice)
-           
-        </td>
-        
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-        </td>
-    </tr>
-}
+            <tbody>
+                @foreach (var item in Model.Products)
+                {
+                    <tr>
 
-</table>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProductName)
+                            <br />
+                            @Html.DisplayFor(modelItem => item.UnitPrice)
+                        </td>
+                        <td>
+                            @Html.Hidden("productID",item.ProductID)
+                            <input type="submit" value="Add To Cart"/>
+                        </td>
+                    </tr>
+
+                }
+
+            </tbody>
+        </table>
+    }
+    
+
+</div>
+<div class="pager">
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item">
+                @Html.Pager(Model.PagingInfo)
+            </li>
+        </ul>
+    </nav>
+
+</div>
+
+
+
+
+

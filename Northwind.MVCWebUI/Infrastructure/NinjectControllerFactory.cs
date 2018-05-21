@@ -26,6 +26,7 @@ namespace Northwind.MVCWebUI.Infrastructure
         private void AddBllBindings()
         {
             _ninjectKernel.Bind<IProductService>().To<ProductManager>().WithConstructorArgument("productDal",new ProductDAL());
+            _ninjectKernel.Bind<ICategoryService>().To<CategoryManager>().WithConstructorArgument("categoryDal", new CategoryDAL());
         }
 
         //private void AddServiceBindings()

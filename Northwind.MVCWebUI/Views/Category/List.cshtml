@@ -1,0 +1,59 @@
+﻿@model List<Northwind.Entities.Category>
+
+
+
+
+
+<div class="column col-sm-3 col-xs-1 sidebar-offcanvas" id="sidebar">
+
+    <ul class="nav" id="menu">
+        <li>
+            @Html.RouteLink("Home", new { controller = "Product", action = "Index", category = 0 },new { @class =  ViewBag.CurrentCategory==0 ? "selected" : null })
+        </li>
+        @foreach (var category in Model)
+        {
+            <li>
+                @Html.RouteLink(category.CategoryName, new
+           {
+               category = category.CategoryID,
+               controller = "Product",
+               action = "Index"
+           },new { @class=category.CategoryID==ViewBag.CurrentCategory?"selected":null})
+            </li>
+        }
+    </ul>
+</div>
+
+
+
+
+
+
+
+
+
+@*<p>*@
+@*@Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryName)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
+
+    </table>*@

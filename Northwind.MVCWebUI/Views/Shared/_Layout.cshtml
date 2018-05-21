@@ -7,16 +7,41 @@
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Northwind</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="http://content.jwplatform.com/libraries/Itohe0UC.js"></script>
 </head>
 <body>
-    <div id="header">
+    @*<div id="header">
+        </div>
+        <div id="categories">
+            @{Html.RenderAction("List", "Category");}
+        </div>
+        <div id="content">
+          
+        </div>*@
+
+
+    <div class="wrapper">
+        <div class="row row-offcanvas row-offcanvas-left">
+            <div>
+                @{Html.RenderAction("List", "Category");}
+            </div>
+            <div class="column col-sm-9 col-xs-11" id="main">
+                <p><a href="#" data-toggle="offcanvas"><i class="fa fa-navicon fa-2x"></i></a></p>
+                @RenderBody()
+            </div>
+        </div>
     </div>
-    <div id="categories">
-    </div>
-    <div id="content">
-        @RenderBody()
-    </div>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
 </body>
 </html>
