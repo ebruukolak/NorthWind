@@ -3,39 +3,78 @@
 @{
     ViewBag.Title = "Northwind";
 }
-<h1>Products</h1>
+@*<h1>Products</h1>*@
 
-<div style="background-color:darkgray">
+@*<div style="background-color:darkgray">
+        @using (Html.BeginForm("AddToCart", "Cart"))
+        {
+            <table class="table table-striped">
+
+                <tbody>
+                    @foreach (var item in Model.Products)
+                    {
+                        <tr>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ProductName)
+                                <br />
+                                @Html.DisplayFor(modelItem => item.UnitPrice)
+                            </td>
+                            <td>
+                                @Html.Hidden("productID", item.ProductID)
+                                <input class="btn btn-primary" type="submit" value="Add To Cart" />
+                            </td>
+                        </tr>
+
+                    }
+
+                </tbody>
+            </table>
+        }
+    </div>*@
+
+
+
+
+
+<div class="col-md-12 col-sm-12 mb">
     @using (Html.BeginForm("AddToCart", "Cart"))
     {
-        <table class="table table-striped">
+        <div>
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-md-offset-1 box0">
 
-            <tbody>
-                @foreach (var item in Model.Products)
-                {
-                    <tr>
+                    <table class="table table-striped">
+                        <tbody>
+                            @foreach (var item in Model.Products)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ProductName)
+                                        <br />
+                                        @Html.DisplayFor(modelItem => item.UnitPrice)
+                                    </td>
+                                    <td>
+                                        @Html.Hidden("productID", item.ProductID)
+                                        <input class="btn btn-primary" type="submit" value="Add To Cart" />
+                                    </td>
+                                </tr>
+                            }
 
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ProductName)
-                            <br />
-                            @Html.DisplayFor(modelItem => item.UnitPrice)
-                        </td>
-                        <td>
-                            @Html.Hidden("productID",item.ProductID)
-                            <input type="submit" value="Add To Cart"/>
-                        </td>
-                    </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
-                }
-
-            </tbody>
-        </table>
+        </div>
     }
-    
-
 </div>
-<div class="pager">
 
+
+
+
+
+<div class="pager">
     <nav aria-label="Page navigation example">
         <ul class="pagination">
             <li class="page-item">
@@ -43,7 +82,6 @@
             </li>
         </ul>
     </nav>
-
 </div>
 
 

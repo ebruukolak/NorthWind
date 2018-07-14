@@ -1,0 +1,87 @@
+﻿@model Northwind.Entities.Cart
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<div style="background-color:darkgray">
+        @using (Html.BeginForm("RemoveFromCart", "Cart"))
+        {
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Product Name </th>
+                        <th scope="col">Unit Price</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Amount</th>
+                    </tr>
+                </thead>
+                @foreach (var item in Model.Lines)
+                {
+                    <tbody>
+                        <tr>
+                            <td>@item.Product.ProductName</td>
+                            <td>@item.Product.UnitPrice.ToString("c")</td>
+                            <td>@item.Quantity</td>
+                            <td>@((item.Quantity * item.Product.UnitPrice).ToString("c"))</td>
+                            <td>
+                                @Html.Hidden("productID", item.Product.ProductID)
+                                <input class="btn btn-primary" type="submit" value="Remove From Cart" />
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+                }
+
+            </table>
+            <p align="center">
+                @Html.ActionLink("Checkout Now","Checkout")
+            </p>
+        }
+    </div>*@
+
+
+<div class="col-md-12 col-sm-12 mb">
+    <div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-md-offset-1 box0">
+                @using (Html.BeginForm("RemoveFromCart", "Cart"))
+                {
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Product Name </th>
+                                <th scope="col">Unit Price</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Amount</th>
+                            </tr>
+                        </thead>
+                        @foreach (var item in Model.Lines)
+                        {
+                            <tbody>
+                                <tr>
+                                    <td>@item.Product.ProductName</td>
+                                    <td>@item.Product.UnitPrice.ToString("c")</td>
+                                    <td>@item.Quantity</td>
+                                    <td>@((item.Quantity * item.Product.UnitPrice).ToString("c"))</td>
+                                    <td>
+                                        @Html.Hidden("productID", item.Product.ProductID)
+                                        <input class="btn btn-primary" type="submit" value="Remove From Cart" />
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+                        }
+
+                    </table>
+                    <p align="center">
+                        @Html.ActionLink("Checkout Now", "Checkout")
+                    </p>
+                }
+            </div>
+        </div>
+
+    </div>
+</div>

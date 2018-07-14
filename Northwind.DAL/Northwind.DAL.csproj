@@ -49,8 +49,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\IAuthtenticateDAL.cs" />
     <Compile Include="Abstract\ICategoryDAL.cs" />
     <Compile Include="Abstract\IProductDAL.cs" />
+    <Compile Include="Concrete\AuthenticateDAL.cs" />
     <Compile Include="Concrete\CategoryDAL.cs" />
     <Compile Include="Concrete\NorthwindContext.cs" />
     <Compile Include="Concrete\ProductDAL.cs" />

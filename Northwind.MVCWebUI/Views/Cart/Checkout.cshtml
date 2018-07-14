@@ -1,0 +1,46 @@
+﻿@model Northwind.Entities.ShippingDetails
+@{
+    ViewBag.Title = "Checkout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    @using (Html.BeginForm())
+    {
+        <table class="table">
+            <tr>
+                <td scope="col">@Html.DisplayNameFor(m => m.Name) </td>
+                <td>@Html.TextBoxFor(m => m.Name) </td>
+            </tr>
+            <tr>
+                <td scope="col">@Html.DisplayNameFor(m => m.Address1)</td>
+                <td>@Html.TextBoxFor(m => m.Address1) </td>
+            </tr>
+            <tr>
+                <td scope="col">@Html.DisplayNameFor(m => m.Address2)</td>
+                <td>@Html.TextBoxFor(m => m.Address2) </td>
+            </tr>
+            <tr>
+                <td scope="col">@Html.DisplayNameFor(m => m.Address3)</td>
+                <td>@Html.TextBoxFor(m => m.Address3) </td>
+            </tr>
+            <tr>
+                <td scope="col">@Html.DisplayNameFor(m => m.City)</td>
+                <td>@Html.TextBoxFor(m => m.City) </td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(m => m.Country)</td>
+                <td>@Html.TextBoxFor(m => m.Country) </td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(m => m.IsGift)</td>
+                <td>@Html.CheckBoxFor(m => m.IsGift) </td>
+            </tr>
+            <tr>
+                <td><input class="btn btn-primary" type="submit" value="Complete Checkout" /></td>
+            </tr>
+
+        </table>
+    }
+</div>
+

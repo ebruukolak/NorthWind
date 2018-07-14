@@ -21,12 +21,10 @@ namespace Northwind.WCF.Concrete
         {
             _productManeger.Delete(productID);
         }
-
         public Product Get(int productID)
         {
             return Get(productID);
         }
-
         public List<Product> GetAll()
         {
             return _productManeger.GetAll();

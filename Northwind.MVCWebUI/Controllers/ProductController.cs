@@ -33,7 +33,7 @@ namespace Northwind.MVCWebUI.Controllers
                     ItemsPageSize = pageSize,
                     TotalCount = products.Count,
                     CurrentPage = page,
-                    CurrentCategory=category
+                    CurrentCategory=category 
                 }
             });
         }

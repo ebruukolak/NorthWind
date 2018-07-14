@@ -33,12 +33,12 @@ namespace Northwind.Entities
         {
             _lines.Clear();
         }
-        //public List<CartLine> Lines
-        //{
-        //    get { return _lines; }
-        //}
+        public List<CartLine> Lines
+        {
+            get { return _lines; }
+        }
     }
-    internal class CartLine
+    public class CartLine
     {
         public Product Product { get; set; }
         public int Quantity { get; set; }

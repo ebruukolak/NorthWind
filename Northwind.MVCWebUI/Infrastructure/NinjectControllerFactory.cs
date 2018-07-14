@@ -12,30 +12,34 @@ using System.Web.Routing;
 
 namespace Northwind.MVCWebUI.Infrastructure
 {
-    public class NinjectControllerFactory:DefaultControllerFactory
-    {
-        private IKernel _ninjectKernel;
+   public class NinjectControllerFactory : DefaultControllerFactory
+   {
+      private IKernel _ninjectKernel;
 
-        public NinjectControllerFactory()
-        {
-            _ninjectKernel = new StandardKernel();
-            AddBllBindings();
-            //AddServiceBindings();
-        }
+      public NinjectControllerFactory()
+      {
+         _ninjectKernel = new StandardKernel();
+         //AddBllBindings();
+         AddServiceBindings();
+      }
 
-        private void AddBllBindings()
-        {
-            _ninjectKernel.Bind<IProductService>().To<ProductManager>().WithConstructorArgument("productDal",new ProductDAL());
-            _ninjectKernel.Bind<ICategoryService>().To<CategoryManager>().WithConstructorArgument("categoryDal", new CategoryDAL());
-        }
+      private void AddBllBindings()
+      {
+         _ninjectKernel.Bind<IProductService>().To<ProductManager>().WithConstructorArgument("productDal", new ProductDAL());
+         _ninjectKernel.Bind<ICategoryService>().To<CategoryManager>().WithConstructorArgument("categoryDal", new CategoryDAL());
+         _ninjectKernel.Bind<IAuthenticateService>().To<AuthenticateManager>().WithConstructorArgument("authenticateDal", new AuthenticateDAL());
 
-        //private void AddServiceBindings()
-        //{
-        //    _ninjectKernel.Bind<IProductService>().To<ProductService>();
-        //}
-         protected override IController GetControllerInstance(RequestContext requestContext, Type controllerType)
-        {
-            return controllerType == null ? null : (IController)_ninjectKernel.Get(controllerType);
-        }
-    }
+      }
+
+      private void AddServiceBindings()
+      {
+         _ninjectKernel.Bind<IProductService>().ToConstant(WCFProxy<IProductService>.CreateChannel());
+         _ninjectKernel.Bind<IAuthenticateService>().ToConstant(WCFProxy<IAuthenticateService>.CreateChannel());
+         _ninjectKernel.Bind<ICategoryService>().ToConstant(WCFProxy<ICategoryService>.CreateChannel());
+      }
+      protected override IController GetControllerInstance(RequestContext requestContext, Type controllerType)
+      {
+         return controllerType == null ? null : (IController)_ninjectKernel.Get(controllerType);
+      }
+   }
 }

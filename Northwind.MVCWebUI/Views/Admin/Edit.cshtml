@@ -1,0 +1,38 @@
+﻿@model Northwind.Entities.Product
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="col-md-12 col-sm-12 mb">
+    <div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-md-offset-1 box0">
+                @using (Html.BeginForm())
+                {
+                <table class="table">
+                    @Html.HiddenFor(m => m.ProductID);
+                    <tr>
+                        <td scope="col">@Html.DisplayNameFor(m => m.ProductName) </td>
+                        <td>@Html.TextBoxFor(m => m.ProductName) </td>
+                    </tr>
+                    <tr>
+                        <td scope="col">@Html.DisplayNameFor(m => m.UnitPrice)</td>
+                        <td>@Html.TextBoxFor(m => m.UnitPrice) </td>
+                    </tr>
+                    <tr>
+                        <td scope="col">@Html.DisplayNameFor(m => m.Category)</td>
+                        <td>@Html.TextBoxFor(m => m.CategoryID) </td>
+                    </tr>
+                    <tr>
+
+                        <td><input class="btn btn-primary" type="submit" value="Edit" /></td>
+                    </tr>
+                </table>
+                }
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,48 @@
+﻿@model System.Collections.Generic.List<Northwind.Entities.Product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-md-12 col-sm-12 mb">
+    <div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-md-offset-1 box0">
+                @Html.ActionLink("Create New", "CreateNew")
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Product ID </th>
+                            <th scope="col">Product Name </th>
+                            <th scope="col">Unit Price</th>
+                            <th scope="col">Edit</th>
+                            <th scope="col">Delete</th>
+                        </tr>
+                    </thead>
+                    @foreach (var item in Model)
+                    {
+
+                        <tbody>
+                            <tr>
+                                <td>@item.ProductID</td>
+                                <td>@item.ProductName</td>
+                                <td>@item.UnitPrice.ToString("c")</td>
+                                <td>
+                                   
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.ProductID })
+                                </td>
+                                <td>
+                                    @*@Html.Hidden("productID", item.ProductID)*@
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.ProductID })
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    }
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
